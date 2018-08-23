@@ -7,19 +7,24 @@ console.log('hello');
 //replace enlarged image
 
 function main(){
-  $('.thumbnails').on('click', event => {
-    const selectedCat = $(event.target).attr('src');
-    $('.hero').children().attr('src', selectedCat);
-    console.log(selectedCat);
-  });
+  setSrc('click');
+
+  //Doesn't work
+  setSrc('keydown');
 
 
 }
 
-function setSrc(event){
-  const selectedCat = $(event.target).attr('src');
-  $('.hero').children().attr('src', selectedCat);
-  console.log(selectedCat);
+function setSrc(eventToCheck){
+  $('.thumbnails').on(eventToCheck, event => {
+    const selectedCat = $(event.target).attr('src');
+    $('.hero').children().attr('src', selectedCat);
+    
+    const selectedCatAlt = $(event.target).attr('alt');
+    $('.hero').children().attr('alt', selectedCatAlt);
+    //console.log(selectedCat);
+  });
+  
 
 }
 
